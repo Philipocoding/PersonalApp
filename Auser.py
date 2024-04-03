@@ -1,5 +1,5 @@
+from FileHandling import *
 class User:
-    
     Allusers = []
     def __init__(self, name, username, password, height, age, weight):
         self.name = name
@@ -24,5 +24,5 @@ class User:
         height = float(input("Enter your height (cm) - "))
 
         newUser = User(name, username, password, height, age, weight) 
-        Allusers.append(newUser)
-        print(newUser)
+        User.Allusers.append(newUser)
+        writeToFile(User.Allusers)
