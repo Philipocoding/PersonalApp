@@ -1,3 +1,4 @@
+from Auser import User
 entry = True
 
 while entry:
