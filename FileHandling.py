@@ -1,11 +1,25 @@
 import csv
 
 def writeToFile(Allusers):
-    with open('details.csv', 'w', newline='') as file:
-        writer = csv.writer(file, delimiter=';')
+    with open('details.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        
+        # Write headers (adjust as necessary)
+        headers = ['name', 'username', 'password', 'height', 'age', 'weight']
+        writer.writerow(headers)
+        
+        # Convert list of objects to list of lists
+        rows = []
         for item in Allusers:
-            intdata = f"{str(item.height)}{str(item.age)}{str(item.weight)}"
-            row = f"{item.name}{item.username}{item.password}{intdata}"
-           # row = f"{item.name},{item.username},{item.password},{item.height},{item.age},{item.weight}"
-            print(row)
-            writer.writerow(row)
+            row = [
+                item.name,
+                item.username,
+                item.password,
+                item.height,
+                item.age,
+                item.weight
+            ]
+            rows.append(row)
+        
+        # Write all rows at once
+        writer.writerows(rows)
